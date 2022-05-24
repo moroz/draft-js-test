@@ -8,6 +8,15 @@
   align-items: center
   justify-content: center
   min-width: $button-height
+  background: transparent
+  border: 0
+  outline: 0
+
+  &:hover
+    background: $button-hover-bg
+
+  &.active
+    background: $button-active-bg
 
   svg
     height: $icon-height
@@ -16,3 +25,5 @@
   &.icon
     width: $button-height
 
+  &:not(.icon)
+    padding: 0 .75em

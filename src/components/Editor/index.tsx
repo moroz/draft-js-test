@@ -51,7 +51,8 @@ const EditorComponent: React.FC<Props> = () => {
   );
 
   const onToggleInlineStyle = useCallback(
-    (style: string) => () => {
+    (style: string) => (e: MouseEvent) => {
+      e.preventDefault();
       setEditorState((oldState) => {
         return RichUtils.toggleInlineStyle(oldState, style);
       });
@@ -72,7 +73,7 @@ const EditorComponent: React.FC<Props> = () => {
         <Editor
           editorState={editorState}
           onChange={setEditorState}
-          blockStyleFn={getBlockStyle}
+          blockStyleFn={getBlockStyle as any}
           handleKeyCommand={handleKeyCommand}
         />
       </div>

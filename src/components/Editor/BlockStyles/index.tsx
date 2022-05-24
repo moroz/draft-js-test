@@ -6,7 +6,7 @@ import ToolbarButton from "../ToolbarButton";
 
 interface Props {
   editorState: EditorState;
-  onToggle: (type: string) => () => void;
+  onToggle: (type: string) => (e: any) => void;
 }
 
 const BlockStyles: React.FC<Props> = ({ editorState, onToggle }) => {

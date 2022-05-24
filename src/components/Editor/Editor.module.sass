@@ -4,21 +4,36 @@
   box-sizing: border-box
 
 .editor
-  padding: 1rem
   display: flex
   flex-direction: column
   height: 100vh
-  gap: 1rem
 
 .controls
   background: $toolbar-color
+  display: flex
+  border-bottom: 1px solid #ddd
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .1)
+  gap: .5rem
 
 .toolbar
   display: flex
+  gap: .25rem
+  position: relative
+
+  &:not(:last-child)
+    &::after
+      content: ''
+      display: block
+      width: 1px
+      background: #ccc
+      position: absolute
+      right: -.25rem
+      top: 3px
+      bottom: 3px
 
 .editorContainer
   flex: 1
-  background: #ddd
+  padding: 1rem
 
   :global
     .DraftEditor-root

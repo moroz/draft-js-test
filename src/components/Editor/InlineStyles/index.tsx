@@ -5,7 +5,7 @@ import ToolbarButton from "../ToolbarButton";
 
 interface Props {
   editorState: EditorState;
-  onToggle: (style: string) => () => void;
+  onToggle: (style: string) => (e: MouseEvent) => void;
 }
 
 const InlineStyles: React.FC<Props> = ({ editorState, onToggle }) => {

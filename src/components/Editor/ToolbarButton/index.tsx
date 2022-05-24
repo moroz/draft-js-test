@@ -7,7 +7,7 @@ interface Props {
   icon?: React.FC<any>;
   title?: string;
   active?: boolean;
-  onToggle: VoidFunction;
+  onToggle: (e: MouseEvent) => void;
 }
 
 const ToolbarButton: React.FC<Props> = ({
