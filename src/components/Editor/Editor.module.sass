@@ -1,3 +1,5 @@
+@import ../../css/_variables.sass
+
 *, *::after, *::before
   box-sizing: border-box
 
@@ -9,7 +11,10 @@
   gap: 1rem
 
 .controls
-  background: salmon
+  background: $toolbar-color
+
+.toolbar
+  display: flex
 
 .editorContainer
   flex: 1

@@ -1,11 +1,26 @@
 import React, { useCallback, useState } from "react";
 import "draft-js/dist/Draft.css";
-import { DraftEditorCommand, Editor, EditorState, RichUtils } from "draft-js";
+import {
+  ContentBlock,
+  DraftEditorCommand,
+  Editor,
+  EditorState,
+  RichUtils
+} from "draft-js";
 import styles from "./Editor.module.sass";
 import BlockStyles from "./BlockStyles";
 import InlineStyles from "./InlineStyles";
 
 interface Props {}
+
+function getBlockStyle(block: ContentBlock) {
+  switch (block.getType()) {
+    case "blockquote":
+      return "RichEditor-blockquote";
+    default:
+      return null;
+  }
+}
 
 const EditorComponent: React.FC<Props> = () => {
   const [editorState, setEditorState] = useState(() =>
@@ -26,7 +41,8 @@ const EditorComponent: React.FC<Props> = () => {
   );
 
   const onToggleBlockType = useCallback(
-    (blockType: string) => {
+    (blockType: string) => (e: MouseEvent) => {
+      e.preventDefault();
       setEditorState((oldState) => {
         return RichUtils.toggleBlockType(oldState, blockType);
       });
@@ -35,7 +51,7 @@ const EditorComponent: React.FC<Props> = () => {
   );
 
   const onToggleInlineStyle = useCallback(
-    (style: string) => {
+    (style: string) => () => {
       setEditorState((oldState) => {
         return RichUtils.toggleInlineStyle(oldState, style);
       });
@@ -56,6 +72,7 @@ const EditorComponent: React.FC<Props> = () => {
         <Editor
           editorState={editorState}
           onChange={setEditorState}
+          blockStyleFn={getBlockStyle}
           handleKeyCommand={handleKeyCommand}
         />
       </div>
