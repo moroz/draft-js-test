@@ -63,11 +63,11 @@ const EditorComponent: React.FC<Props> = () => {
   return (
     <div className={styles.editor}>
       <div className={styles.controls}>
-        <BlockStyles editorState={editorState} onToggle={onToggleBlockType} />
         <InlineStyles
           editorState={editorState}
           onToggle={onToggleInlineStyle}
         />
+        <BlockStyles editorState={editorState} onToggle={onToggleBlockType} />
       </div>
       <div className={styles.editorContainer}>
         <Editor
